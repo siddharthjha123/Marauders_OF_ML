@@ -1,22 +1,22 @@
-/* 1. Define color variables and basic body styles */
+/* 1. Defining color variables and basic body styles */
 :root {
-    --silver-mist: #E5E4E2;
-    --soft-platinum: #C5C6C7;
+    --silver-mist: #e5e4e2;
+    --soft-platinum: #c5c6c7;
     --cool-pewter: #909497;
-    --dark-graphite: #2F2F2F;
-    --page-background: #fff; /* A white background for this page */
+    --dark-graphite: #2f2f2f;
+    --page-background: #fff;
     --text-dark: #1a1a1a;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     margin: 0;
     background-color: var(--page-background);
     color: var(--text-dark);
 }
 
 body.transition-start #page-transition-overlay {
-    /* This forces the overlay to cover the screen on page load */
+    /* This is forcing the overlay to cover the screen on page load */
     clip-path: circle(100% at 50% 50%);
 }
 
@@ -26,13 +26,13 @@ body.transition-start #page-transition-overlay {
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.fade-in-grid{
+.fade-in-grid {
     opacity: 0;
     transform: translateY(80px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.fade-in-grid.show{
+.fade-in-grid.show {
     opacity: 1;
     transform: translateY(0);
 }
@@ -43,7 +43,7 @@ body.transition-start #page-transition-overlay {
     transform: translateY(0);
 }
 
-/* Header and Navigation */
+/* 2. Header and Navigation */
 header {
     background-color: var(--dark-graphite);
     padding: 15px 0;
@@ -143,7 +143,8 @@ nav {
 
 .cart-preview {
     position: absolute;
-    top: 100%; /* Position it right below the icon */
+    top: 100%;
+    /* Position it right below the icon */
     right: 0;
     width: 280px;
     background-color: white;
@@ -183,6 +184,7 @@ nav {
     margin-bottom: 0.75rem;
     border-bottom: 1px solid #f0f0f0;
 }
+
 .cart-preview-item div p {
     color: var(--dark-graphite);
 }
@@ -191,6 +193,7 @@ nav {
     border-bottom: none;
     margin-bottom: 0;
 }
+
 .cart-preview-item img {
     width: 50px;
     height: 50px;
@@ -203,7 +206,7 @@ nav {
     margin: 0 auto;
 }
 
-/* 2. Shop Header Styling */
+/* 3. Shop Header Styling */
 .shop-header {
     padding: 4rem 0;
     text-align: center;
@@ -223,7 +226,7 @@ nav {
     line-height: 1.6;
 }
 
-/* 3. Main Content Layout */
+/* 4. Main Content Layout */
 .shop-content {
     display: grid;
     /* A fixed-width sidebar and a flexible main area */
@@ -232,7 +235,7 @@ nav {
     padding: 3rem 0;
 }
 
-/* 4. Filter Sidebar Styling */
+/* 5. Filter Sidebar Styling */
 .filter-sidebar h2 {
     font-size: 1.5rem;
     border-bottom: 1px solid var(--silver-mist);
@@ -257,7 +260,7 @@ nav {
     height: 18px;
 }
 
-/* 5. Product Grid Styling */
+/* 6. Product Grid Styling */
 .product-grid-header {
     display: flex;
     justify-content: space-between;
@@ -286,14 +289,14 @@ nav {
 
 .product-card img {
     width: 100%;
-    height: 400px; /* Fixed height for consistency */
+    height: 400px;
     object-fit: cover;
-    background-color: #f5f5f5; /* Placeholder color */
+    background-color: #f5f5f5;
     margin-bottom: 1rem;
     transition: all 0.3s ease-out;
 }
 
-.product-card img:hover{
+.product-card img:hover {
     scale: 1.1;
     transition: all 0.3s ease-in;
     cursor: pointer;
@@ -311,11 +314,11 @@ nav {
     color: var(--cool-pewter);
 }
 
-.category-checkbox{
+.category-checkbox {
     accent-color: var(--dark-graphite);
 }
 
-/* 6. Product Detail Modal Styling */
+/* 7. Product Detail Modal Styling */
 
 .product-detail-modal {
     position: fixed;
@@ -324,12 +327,12 @@ nav {
     width: 100%;
     height: 100%;
     z-index: 1000;
-    display: none; /* Hidden by default */
+    display: none;
     justify-content: center;
     align-items: center;
 }
 
-/* Make the modal visible when it has the 'show' class */
+/* Making the modal visible when it has the 'show' class */
 .product-detail-modal.show {
     display: flex;
 }
@@ -426,32 +429,41 @@ nav {
     cursor: pointer;
 }
 
-/* A simple fade-in for the background */
 @keyframes fade-in {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* A subtle zoom-in for the card */
 @keyframes zoom-in {
-    from { opacity: 0; transform: scale(0.95); }
-    to   { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 
-/* Next, apply these animations when the modal is shown */
-
-/* Animate the overlay when the modal gets the 'show' class */
+/* Animating the overlay when the modal gets the 'show' class */
 .product-detail-modal.show .modal-overlay {
     animation: fade-in 0.3s ease-out forwards;
 }
 
-/* Animate the content card when the modal gets the 'show' class */
+/* Animating the content card when the modal gets the 'show' class */
 .product-detail-modal.show .modal-content {
     animation: zoom-in 0.3s ease-out forwards;
 }
 
-/* --- Sidebar and Hamburger Styles --- */
+/* 8. Sidebar and Hamburger Styles */
 .mobile-sidebar {
     position: fixed;
     top: 0;
@@ -461,7 +473,8 @@ nav {
     background-color: var(--silver-mist);
     z-index: 1000;
     padding: 2rem;
-    transform: translateX(-100%); /* Start off-screen */
+    transform: translateX(-100%);
+    /* Start off-screen */
     transition: transform 0.3s ease-in-out;
 }
 
@@ -486,7 +499,7 @@ nav {
     transition: 0.3s ease-out;
 }
 
-.mobile-sidebar ul li a:hover{
+.mobile-sidebar ul li a:hover {
     color: var(--cool-pewter);
     scale: 1.1;
     transition: 0.3s ease-in;
@@ -504,7 +517,7 @@ nav {
 }
 
 .hamburger-btn {
-    display: none; /* Hidden on desktop */
+    display: none;
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
@@ -523,30 +536,27 @@ nav {
     border-radius: 2px;
 }
 
-/* --- Media Query to Show/Hide elements --- */
+/* 9. Media Query to Show/Hide elements */
 @media (max-width: 768px) {
-    /* Hide the desktop links */
-    .nav-links, .nav-search {
+
+    .nav-links,
+    .nav-search {
         display: none;
     }
-    
-    /* Show the hamburger button */
+
     .hamburger-btn {
         display: flex;
     }
 
     .shop-content {
-        /* Change to a single column layout earlier for tablets */
         grid-template-columns: 1fr;
     }
 
     .product-grid {
-        /* Keep the 3-column grid on wider tablets if you like, or change to 2 */
         grid-template-columns: 1fr;
     }
 
     .filter-sidebar {
-        /* Add a border to separate the filters when stacked */
         border-bottom: 1px solid var(--silver-mist);
         padding-bottom: 2rem;
     }
@@ -556,7 +566,7 @@ nav {
         object-fit: fit;
     }
 
-    .modal-content img{
+    .modal-content img {
         max-height: 200px;
     }
 }

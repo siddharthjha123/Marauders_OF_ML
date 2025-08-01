@@ -1,10 +1,11 @@
-/* 1. Define color variables and basic body styles */
+/* 1. Defining color variables and basic body styles */
 :root {
     --silver-mist: #E5E4E2;
     --soft-platinum: #C5C6C7;
     --cool-pewter: #909497;
     --dark-graphite: #2F2F2F;
-    --page-background: #f8f8f8; /* A light background for the page */
+    --page-background: #f8f8f8;
+    /* A light background for the page */
 }
 
 body {
@@ -13,22 +14,20 @@ body {
     background-color: var(--page-background);
 }
 
-/* 7. Fade-in on Scroll Animation */
-
-/* This is the initial state of the elements: hidden and slightly moved down */
+/* 2. Fade-in on Scroll Animation */
 .fade-in-element {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.fade-in-grid{
+.fade-in-grid {
     opacity: 0;
     transform: translateY(80px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.fade-in-grid.show{
+.fade-in-grid.show {
     opacity: 1;
     transform: translateY(0);
 }
@@ -39,13 +38,13 @@ body {
     transform: translateY(0);
 }
 
-/* 2. Page layout container (80% width, centered) */
+/* 3. Page layout container (80% width, centered) */
 .page-container {
     width: 80%;
     margin: 0 auto;
 }
 
-/* Header and Navigation */
+/* 4. Header and Navigation */
 header {
     background-color: #fff;
     padding: 15px 0;
@@ -114,12 +113,19 @@ nav {
     display: flex;
     align-items: center;
     gap: 20px;
+    transition: all 0.3 ease-out;
+}
+
+.nav-icons a:hover {
+    color: var(--soft-platinum);
+    scale: 1.1;
+    transition: all 0.3s ease-in;
 }
 
 .cart-icon {
     text-decoration: none;
     color: var(--dark-graphite);
-    position: relative; 
+    position: relative;
 }
 
 .cart-count {
@@ -145,7 +151,7 @@ nav {
 
 .cart-preview {
     position: absolute;
-    top: 100%; /* Position it right below the icon */
+    top: 100%;
     right: 0;
     width: 280px;
     background-color: white;
@@ -155,7 +161,7 @@ nav {
     padding: 1rem;
     z-index: 100;
 
-    /* Hide the box by default and prepare for animation */
+    /* Hiding the box by default and preparing it for animation */
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
@@ -163,7 +169,7 @@ nav {
     pointer-events: none;
 }
 
-/* Show the preview box on hover */
+/* Showing the preview box on hover */
 .cart-icon:hover .cart-preview {
     opacity: 1;
     visibility: visible;
@@ -181,17 +187,19 @@ nav {
     margin-bottom: 0.75rem;
     border-bottom: 1px solid #f0f0f0;
 }
+
 .cart-preview-item:last-child {
     border-bottom: none;
     margin-bottom: 0;
 }
+
 .cart-preview-item img {
     width: 50px;
     height: 50px;
     object-fit: cover;
 }
 
-/* 4. Hero section styling */
+/* 5. Hero section styling */
 .hero {
     display: flex;
     flex-direction: column;
@@ -222,6 +230,10 @@ nav {
     line-height: 1.6;
 }
 
+.hero a {
+    text-decoration: none;
+}
+
 .btn-primary {
     display: inline-block;
     padding: 12px 30px;
@@ -236,82 +248,89 @@ nav {
     background-color: #333;
 }
 
-/* Slider Styles */
-.main_Reference{
+/* 6. Slider Styles */
+.main_Reference {
     width: min(1600px, 98vw);
     margin: auto;
-    overflow: hidden; /* Ensure content doesn't overflow */
-    padding: 0 20px; /* 20px padding on left and right sides */
+    overflow: hidden;
+    padding: 0 20px;
 }
-.slider{
+
+.slider {
     width: 100%;
     height: var(--height);
     overflow: hidden;
-    mask-image: linear-gradient(
-        to right,
-        transparent,
-        #000 5% 95%,
-        transparent
-    );
+    mask-image: linear-gradient(to right,
+            transparent,
+            #000 5% 95%,
+            transparent);
 }
-.slider .list{
+
+.slider .list {
     display: flex;
     width: 100%;
     min-width: calc(var(--width) * var(--quantity));
     position: relative;
-    /*gap: 10px; /* Add gap between slider items */
 }
-.slider .list .item{
+
+.slider .list .item {
     width: var(--width);
     height: var(--height);
     position: absolute;
     left: 100%;
     animation: autoRun 20s linear infinite;
     transition: filter 0.5s, transform 0.5s;
-    animation-delay: calc( (20s / var(--quantity)) * (var(--position) - 1) - 20s)!important;
+    animation-delay: calc((20s / var(--quantity)) * (var(--position) - 1) - 20s) !important;
 }
 
 .slider .list .item:hover {
     transform: scale(1.1);
     z-index: 1;
 }
-.slider .list .item img{
-    width: 100%; /* Set to 100% to ensure full image visibility */
+
+.slider .list .item img {
+    width: 100%;
     height: 100%;
-    object-fit: contain; /* Changed from cover to contain to show the full image */
-    transform: none; /* Remove transform to avoid cropping */
+    object-fit: contain;
+    transform: none;
 }
-@keyframes autoRun{
-    from{
+
+@keyframes autoRun {
+    from {
         left: 100%;
-    }to{
+    }
+
+    to {
         left: calc(var(--width) * -1);
     }
 }
 
 
-.slider:hover .item{
-    animation-play-state: paused!important;
+.slider:hover .item {
+    animation-play-state: paused !important;
 }
 
-.slider .item:hover{/* Remove grayscale on hover */
+.slider .item:hover {
+    /* Remove grayscale on hover */
     transform: scale(1.1);
     z-index: 1;
-} 
+}
 
-.slider[reverse="true"] .item{
+.slider[reverse="true"] .item {
     animation: reversePlay 20s linear infinite;
 }
 
-@keyframes reversePlay{
-    from{
+@keyframes reversePlay {
+    from {
         left: calc(var(--width) * -1);
-    }to{
+    }
+
+    to {
         left: 100%;
     }
 }
 
-/* Featured Section */
+/* 7. Featured Section */
 .featured-in {
     padding: 40px 20px;
     max-width: 1200px;
@@ -336,35 +355,33 @@ nav {
     opacity: 1;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
     }
-    
+
     .hero h1 {
         font-size: 2rem;
     }
-    
+
     .hero p {
         font-size: 1rem;
     }
-    
+
     .featured-logos {
         gap: 30px;
     }
-    
+
     .featured-logo {
         height: 25px;
     }
 }
 
-
-
+/* 8. Hero Section 2 Styles */
 .hero-section {
     text-align: center;
     padding: 6rem 0;
-    
+
 }
 
 .hero-section h1 {
@@ -390,9 +407,22 @@ nav {
     cursor: pointer;
     border-radius: 4px;
     margin-bottom: 5rem;
+    transition: all 0.3s ease-out;
 }
 
-/* 5. Card styling and alignment */
+.shop-all-btn:hover {
+    background: var(--cool-pewter);
+    transition: all 0.3s ease in;
+    scale: 1.1;
+}
+
+.shop-all-btn a {
+    text-decoration: none;
+    color: var(--dark-graphite);
+}
+
+
+/* 9. Card styling and alignment */
 .card-container {
     display: flex;
     justify-content: center;
@@ -416,11 +446,10 @@ nav {
 
 .middle-card {
     height: 440px;
-    /* This moves the middle card up without disturbing the layout */
     transform: translateY(-50px);
 }
 
-/* 6. Featured Products Grid Section */
+/* 10. Featured Products Grid Section */
 .featured-section {
     background-color: var(--dark-graphite);
     padding: 6rem 0;
@@ -447,15 +476,12 @@ nav {
 
 .featured-grid {
     display: grid;
-    /* Creates two equal-width columns */
     grid-template-columns: 1fr 1fr;
-    /*gap: 1.5rem;*/
-    height: 600px; /* Defines a fixed height for the entire grid container */
+    height: 600px;
 }
 
 .grid-left {
     background-color: var(--soft-platinum);
-    /*border-radius: 8px;*/
     min-width: 0;
     min-height: 0;
     overflow: hidden;
@@ -473,14 +499,12 @@ nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    /*gap: 1.5rem;*/
     min-width: 0;
     min-height: 0;
 }
 
 .grid-item {
     background-color: var(--soft-platinum);
-    /*border-radius: 8px;*/
     overflow: hidden;
 }
 
@@ -490,7 +514,7 @@ nav {
     object-fit: cover;
 }
 
-/* Styling for the images inside the slider */
+/* 11.Styling for the images inside the slider */
 .slider-image {
     position: absolute;
     top: 0;
@@ -498,8 +522,7 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0; /* Hide all images by default */
-    transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
+    opacity: 0;
 }
 
 /* The active class makes an image visible */
@@ -515,8 +538,8 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0; /* Hide all images by default */
-    transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
 /* The active class makes an image visible */
@@ -538,9 +561,11 @@ nav {
 .slider-btn {
     width: 40px;
     height: 40px;
-    background-color: rgba(47, 47, 47, 0.7); /* Semi-transparent dark background */
+    background-color: rgba(47, 47, 47, 0.7);
+    /* Semi-transparent dark background */
     border: 1px solid var(--cool-pewter);
-    border-radius: 50%; /* Makes it a circle */
+    border-radius: 50%;
+    /* Makes it a circle */
     color: var(--silver-mist);
     font-size: 1.2rem;
     cursor: pointer;
@@ -549,7 +574,7 @@ nav {
     align-items: center;
 }
 
-/* Team Section */
+/* 12. Team Section */
 .team-section {
     padding: 80px 20px;
     max-width: 1500px;
@@ -574,12 +599,13 @@ nav {
     padding: 20px 10px;
     border-bottom: 1px solid var(--silver-mist);
     position: relative;
-    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);;
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    ;
     border-radius: 10px;
 }
 
 .team-member:hover {
-    background-color: var(--dark-graphite); /* Blue background on hover */
+    background-color: var(--dark-graphite);
     color: var(--silver-mist);
 }
 
@@ -635,7 +661,7 @@ nav {
     object-fit: cover;
 }
 
-/* Loading Screen Styles */
+/* 13. Loading Screen Styles */
 #loading-screen {
     position: fixed;
     top: 0;
@@ -715,6 +741,7 @@ nav {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -726,6 +753,7 @@ nav {
         opacity: 0;
         transform: translateY(50px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -733,15 +761,19 @@ nav {
 }
 
 @keyframes flicker {
-    0%, 50% {
+
+    0%,
+    50% {
         opacity: 1;
     }
-    51%, 100% {
+
+    51%,
+    100% {
         opacity: 0.3;
     }
 }
 
-/* Hide main content during loading */
+/* 14. Hide main content during loading */
 body.loading {
     overflow: hidden;
 }
@@ -758,11 +790,11 @@ body.loading footer {
         font-size: 1.5rem;
         margin-bottom: 2rem;
     }
-    
+
     .text-line {
         font-size: 2.5rem;
     }
-    
+
     .loading-subtitle {
         font-size: 0.9rem;
     }
@@ -772,13 +804,13 @@ body.loading footer {
     .text-line {
         font-size: 2rem;
     }
-    
+
     .loading-counter {
         font-size: 1.2rem;
     }
 }
 
-/* --- Sidebar and Hamburger Styles --- */
+/* 15. Sidebar and Hamburger Styles */
 .mobile-sidebar {
     position: fixed;
     top: 0;
@@ -788,7 +820,8 @@ body.loading footer {
     background-color: var(--dark-graphite);
     z-index: 1000;
     padding: 2rem;
-    transform: translateX(-100%); /* Start off-screen */
+    transform: translateX(-100%);
+    /* Start off-screen */
     transition: transform 0.3s ease-in-out;
 }
 
@@ -813,7 +846,7 @@ body.loading footer {
     transition: 0.3s ease-out;
 }
 
-.mobile-sidebar ul li a:hover{
+.mobile-sidebar ul li a:hover {
     color: var(--cool-pewter);
     scale: 1.1;
     transition: 0.3s ease-in;
@@ -831,7 +864,8 @@ body.loading footer {
 }
 
 .hamburger-btn {
-    display: none; /* Hidden on desktop */
+    display: none;
+    /* Hidden on desktop */
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
@@ -853,15 +887,15 @@ body.loading footer {
 
 
 /*Adding Responsiveness For Mobile Screens*/
-/* --- Mobile Styles (up to 480px) --- */
 @media (max-width: 480px) {
     .nav-left {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .nav-search {
-        display: none; /* Hide the search bar on very small screens */
+        display: none;
+        /* Hide the search bar on very small screens */
     }
 
     .hero-section {
@@ -869,17 +903,16 @@ body.loading footer {
     }
 
     .hero-section h1 {
-        font-size: 2.5rem; /* Even smaller title */
+        font-size: 2.5rem;
     }
 
     .card-container {
         /* Stack the cards vertically */
-        flex-direction: column; 
+        flex-direction: column;
     }
 
     .middle-card {
-        /* Reset the transform on the middle card so it doesn't stick out */
-        transform: translateY(0); 
+        transform: translateY(0);
     }
 
     .featured-grid {
@@ -887,26 +920,28 @@ body.loading footer {
         height: 600px;
         margin-bottom: 10px;
     }
-    
+
     .child1 .grid-right {
         /* This creates a two-column grid */
-        grid-template-columns: 1fr 1fr; 
+        grid-template-columns: 1fr 1fr;
         /* The rows will now be created automatically, so we can remove grid-template-rows */
-        height: 400px; /* Adjust height for a 2x2 grid */
+        height: 400px;
+        /* Adjust height for a 2x2 grid */
     }
 
-    .child1 .grid-left{
+    .child1 .grid-left {
         height: 200px;
     }
 
     .child2 .grid-right {
         /* This creates a two-column grid */
-        grid-template-columns: 1fr 1fr; 
+        grid-template-columns: 1fr 1fr;
         /* The rows will now be created automatically, so we can remove grid-template-rows */
-        height: 400px; /* Adjust height for a 2x2 grid */
+        height: 400px;
+        /* Adjust height for a 2x2 grid */
     }
 
-    .child2 .grid-left{
+    .child2 .grid-left {
         height: 200px;
     }
 }
@@ -914,36 +949,37 @@ body.loading footer {
 
 /* --- Tablet Styles (up to 768px) --- */
 @media (max-width: 768px) {
-    .hamburger-btn{
+    .hamburger-btn {
         display: flex;
     }
 
     .page-container {
-        width: 90%; /* Use more of the screen space */
+        width: 90%;
+        /* Use more of the screen space */
     }
-    
+
     .navbar {
         flex-direction: column;
         gap: 1rem;
     }
 
     .hero-section h1 {
-        font-size: 3rem; /* Make the main title smaller */
+        font-size: 3rem;
     }
 
     .card-container {
-        /* Allow cards to wrap to the next line if they don't fit */
-        flex-wrap: wrap; 
+        /* Allowing cards to wrap to the next line if they don't fit */
+        flex-wrap: wrap;
     }
-    
+
     .featured-grid {
-        /* Change the 2-column grid to a single column */
-        grid-template-columns: 1fr; 
-        height: auto; /* Let the height adjust automatically */
+        /* Changing the 2-column grid to a single column */
+        grid-template-columns: 1fr;
+        height: auto;
     }
 
     .grid-right {
-        /* Keep the 2x2 grid on tablets, but you could change it here */
+        /* Keeping the 2x2 grid on tablets, but you could change it here */
         height: 400px;
     }
 }

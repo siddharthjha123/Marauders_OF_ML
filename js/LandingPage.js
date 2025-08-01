@@ -1,40 +1,36 @@
 window.addEventListener('load', function() {
-    // Add loading class to body
+    // Adding loading class to body
     document.body.classList.add('loading');
-    
-    // Loading counter animation
+
+    // This is counter animation
     let currentPercentage = 0;
     const targetPercentage = 100;
     const percentageElement = document.getElementById('loading-percentage');
     const loadingScreen = document.getElementById('loading-screen');
-    
-    // Simulate loading progress
+
+    // Simulating the loading progress as per element requirements
     const loadingInterval = setInterval(() => {
         currentPercentage += Math.random() * 3 + 1; // Random increment between 1-4
-        
+
         if (currentPercentage >= targetPercentage) {
             currentPercentage = targetPercentage;
             clearInterval(loadingInterval);
-            
+
             // Hide loading screen after reaching 100%
             setTimeout(() => {
                 loadingScreen.style.opacity = '0';
                 loadingScreen.style.transition = 'opacity 0.5s ease-out';
-                
+
                 setTimeout(() => {
                     loadingScreen.style.display = 'none';
                     document.body.classList.remove('loading');
                 }, 500);
-            }, 800); // Wait a bit at 100% before hiding
+            }, 800);
         }
-        
+
         percentageElement.textContent = Math.floor(currentPercentage);
-    }, 50); // Update every 100ms
+    }, 50); // Updating every 50 ms
 });
-
-//let cartItems = []; 
-
-// Version 2: Cart has items
 
 let cartItems = [];
 
@@ -70,23 +66,23 @@ function updateCartPreview() {
     }
 }
 
-// Call the function on page load to set the initial state
+// Calling the function on page load to set the initial state
 document.addEventListener('DOMContentLoaded', updateCartPreview);
-// --- Mobile Sidebar Logic ---
+// This the mobile sidebar logic
 document.addEventListener('DOMContentLoaded', () => {
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const sidebar = document.getElementById('mobile-sidebar');
     const closeBtn = document.getElementById('close-sidebar-btn');
 
     // Open sidebar
-    if(hamburgerBtn){
+    if (hamburgerBtn) {
         hamburgerBtn.addEventListener('click', () => {
             sidebar.classList.add('is-open');
         });
     }
 
     // Close sidebar
-    if(closeBtn){
+    if (closeBtn) {
         closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('is-open');
         });
@@ -104,25 +100,25 @@ let currentIndex = 0;
 let slideInterval;
 let slideInterval2;
 
-// 3. Function to show the correct image
+// Function to show the correct image
 function showImage(index) {
     // First, remove 'active' class from all images
     images.forEach(img => img.classList.remove('active'));
     // Then, add 'active' class to the one we want to show
     images[index].classList.add('active');
 }
-function showImage2(index){
+
+function showImage2(index) {
     images2.forEach(img => img.classList.remove('active'));
     images2[index].classList.add('active')
 }
-
 
 function autoSlide() {
     currentIndex = (currentIndex + 1) % images.length;
     showImage(currentIndex);
 }
 
-function autoslide2(){
+function autoslide2() {
     currentIndex = (currentIndex + 1) % images2.length;
     showImage2(currentIndex);
 }
@@ -134,7 +130,7 @@ function startSlideTimer() {
     slideInterval = setInterval(autoSlide, 2500);
 }
 
-function startSlideTimer2(){
+function startSlideTimer2() {
     clearInterval(slideInterval2);
     slideInterval2 = setInterval(autoslide2, 2500);
 }
@@ -170,17 +166,14 @@ const animatedGrid = document.querySelectorAll('.fade-in-grid');
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        // If the element is intersecting the viewport
         if (entry.isIntersecting) {
-                // Add the 'show' class to make it visible
             entry.target.classList.add('show');
-                // Stop observing the element so the animation doesn't repeat
             observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        // Trigger the animation when the element is 15% visible
-        threshold: 0.30
+        }
+    });
+}, {
+    // Trigger the animation when the element is 30% visible
+    threshold: 0.30
 });
 
 // Tell the observer to watch each of the animated elements
@@ -193,16 +186,14 @@ const overlay = document.getElementById('page-transition-overlay');
 
 transitionLinks.forEach(link => {
     link.addEventListener('click', function(event) {
-        // 1. Prevent the link from navigating immediately
+    
         event.preventDefault();
         const destination = this.href;
 
-        // 2. Add the animation class to the overlay
         overlay.classList.add('circle-in-animation');
 
-        // 3. Wait for the animation to finish, then go to the new page
         setTimeout(() => {
             window.location = destination;
-        }, 700); // Must match the animation duration in CSS
+        }, 700); 
     });
 });

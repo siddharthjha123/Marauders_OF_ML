@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <div id="loading-screen">
         <div class="loading-content">
@@ -48,13 +50,14 @@
                 <a href="#" class="cart-icon">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-count">0</span>
-            
+
                     <div class="cart-preview">
                         <div id="cart-preview-content">
-                            </div>
+                        </div>
                     </div>
                 </a>
-                <a href="#" class="login-link">Login</a>
+                <a href="login.html" class="login-link">Login</a>
+                <a href="register.html" class="login-link">Register</a>
             </div>
             <button id="hamburger-btn" class="hamburger-btn">
                 <span></span>
@@ -69,7 +72,8 @@
                 <li><a href="ShopPage.html">Shop</a></li>
                 <li><a href="#">Stories</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
             </ul>
         </nav>
     </header>
@@ -79,26 +83,58 @@
             <div class="hero-content">
                 <h1>Better clothing for the planet</h1>
                 <p>Create screens directly in Method or add your images from Sketch or Figma. You can even sync designs from your cloud storage!</p>
-                <a href="#" class="btn-primary">Shop All</a>
+                <a href="ShopPage.html" class="btn-primary">Shop All</a>
             </div>
-            
+
             <div class="main_Reference">
 
                 <div class="slider" reverse="true" style=" 
                     --width: 600px; 
                     --height: 600px; 
                     --quantity: 8; 
-                "> 
-                    <div class="list"> 
-                        <div class="item" style="--position: 1"><picture><img src="images/slider2_1.jpg" alt="Slider 2-1"><source srcset="images/slider2_1.svg" type="image/svg+xml"></picture></div> 
-                        <div class="item" style="--position: 2"><picture><img src="images/slider2_2.jpg" alt="Slider 2-2"><source srcset="images/slider2_2.svg" type="image/svg+xml"></picture></div> 
-                        <div class="item" style="--position: 3"><picture><img src="images/slider2_3.jpg" alt="Slider 2-3"><source srcset="images/slider2_3.svg" type="image/svg+xml"></picture></div>   
-                        <div class="item" style="--position: 4"><picture><img src="images/slider2_4.jpg" alt="Slider 2-4"><source srcset="images/slider2_4.svg" type="image/svg+xml"></picture></div> 
-                        <div class="item" style="--position: 5"><picture><img src="images/slider2_5.jpg" alt="Slider 2-5"><source srcset="images/slider2_5.svg" type="image/svg+xml"></picture></div> 
-                        <div class="item" style="--position: 6"><picture><img src="images/slider2_6.jpg" alt="Slider 2-6"><source srcset="images/slider2_6.svg" type="image/svg+xml"></picture></div> 
-                        <div class="item" style="--position: 7"><picture><img src="images/slider2_7.jpg" alt="Slider 2-7"><source srcset="images/slider2_7.svg" type="image/svg+xml"></picture></div> 
-                        <div class="item" style="--position: 8"><picture><img src="images/slider2_8.jpg" alt="Slider 2-8"><source srcset="images/slider2_8.svg" type="image/svg+xml"></picture></div> 
-                    </div> 
+                ">
+                    <div class="list">
+                        <div class="item" style="--position: 1">
+                            <picture><img src="images/slider2_1.jpg" alt="Slider 2-1">
+                                <source srcset="images/slider2_1.svg" type="image/svg+xml">
+                            </picture>
+                        </div>
+                        <div class="item" style="--position: 2">
+                            <picture><img src="images/slider2_2.jpg" alt="Slider 2-2">
+                                <source srcset="images/slider2_2.svg" type="image/svg+xml">
+                            </picture>
+                        </div>
+                        <div class="item" style="--position: 3">
+                            <picture><img src="images/slider2_3.jpg" alt="Slider 2-3">
+                                <source srcset="images/slider2_3.svg" type="image/svg+xml">
+                            </picture>
+                        </div>
+                        <div class="item" style="--position: 4">
+                            <picture><img src="images/slider2_4.jpg" alt="Slider 2-4">
+                                <source srcset="images/slider2_4.svg" type="image/svg+xml">
+                            </picture>
+                        </div>
+                        <div class="item" style="--position: 5">
+                            <picture><img src="images/slider2_5.jpg" alt="Slider 2-5">
+                                <source srcset="images/slider2_5.svg" type="image/svg+xml">
+                            </picture>
+                        </div>
+                        <div class="item" style="--position: 6">
+                            <picture><img src="images/slider2_6.jpg" alt="Slider 2-6">
+                                <source srcset="images/slider2_6.svg" type="image/svg+xml">
+                            </picture>
+                        </div>
+                        <div class="item" style="--position: 7">
+                            <picture><img src="images/slider2_7.jpg" alt="Slider 2-7">
+                                <source srcset="images/slider2_7.svg" type="image/svg+xml">
+                            </picture>
+                        </div>
+                        <div class="item" style="--position: 8">
+                            <picture><img src="images/slider2_8.jpg" alt="Slider 2-8">
+                                <source srcset="images/slider2_8.svg" type="image/svg+xml">
+                            </picture>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -116,7 +152,8 @@
             <section class="hero-section">
                 <h1>Our latest arrivals</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At suscipit impedit, eligendi tenetur incidunt repellat aut molestiae dolores aliquid? Atque!</p>
-                <button class="shop-all-btn">Shop All</button>
+                <button class="shop-all-btn">
+                    <a href="ShopPage.html">Shop All</a></button>
 
                 <div class="card-container">
                     <div class="card">
@@ -139,18 +176,18 @@
                 <h2>Featured Products</h2>
                 <p>Discover our handpicked collection of premium furniture and decor, crafted to bring elegance and comfort to your home.</p>
             </div>
-    
+
             <div class="featured-grid child1">
                 <div class="grid-left">
                     <img src="images/product1.jpg" alt="Product 1" class="slider-image active">
                     <img src="images/product5.jpg" alt="Product 5" class="slider-image">
                     <img src="images/product6.jpg" alt="Product 6" class="slider-image">
                     <div class="slider-controls">
-                        <button id="prev-btn" class="slider-btn">&#x2190;</button> 
+                        <button id="prev-btn" class="slider-btn">&#x2190;</button>
                         <button id="next-btn" class="slider-btn">&#x2192;</button>
                     </div>
                 </div>
-    
+
                 <div class="grid-right">
                     <div class="grid-item">
                         <img src="images/product3.jpg" alt="Product 3">`
@@ -168,7 +205,7 @@
             </div>
 
             <div class="featured-grid child2 fade-in-grid">
-    
+
                 <div class="grid-right">
                     <div class="grid-item">
                         <img src="images/product10.jpg" alt="Product 3">`
@@ -183,13 +220,13 @@
                         <img src="images/product6.jpg" alt="Product 6">
                     </div>
                 </div>
-                
+
                 <div class="grid-left">
                     <img src="images/product8.jpg" alt="Product 1" class="slider-image-2 active">
                     <img src="images/product9.jpg" alt="Product 5" class="slider-image-2">
                     <img src="images/product7.jpg" alt="Product 7" class="slider-image-2">
                     <div class="slider-controls">
-                        <button id="prev-btn-2" class="slider-btn">&#x2190;</button> 
+                        <button id="prev-btn-2" class="slider-btn">&#x2190;</button>
                         <button id="next-btn-2" class="slider-btn">&#x2192;</button>
                     </div>
                 </div>
@@ -224,4 +261,5 @@
     <script src="js/LandingPage.js"></script>
 
 </body>
+
 </html>

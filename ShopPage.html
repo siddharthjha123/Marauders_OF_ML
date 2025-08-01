@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="css/Shared.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body class="transition-start">
     <div id="page-transition-overlay"></div>
     <header>
@@ -31,13 +33,14 @@
                 <a href="#" class="cart-icon">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-count">0</span>
-            
+
                     <div class="cart-preview">
                         <div id="cart-preview-content">
                         </div>
                     </div>
                 </a>
-                <a href="#" class="login-link">Login</a>
+                <a href="login.html" class="login-link">Login</a>
+                <a href="register.html" class="login-link">Register</a>
             </div>
             <button id="hamburger-btn" class="hamburger-btn">
                 <span></span>
@@ -51,7 +54,8 @@
                 <li><a href="ShopPage.html">Shop</a></li>
                 <li><a href="#">Stories</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">register</a></li>
             </ul>
         </nav>
     </header>
@@ -84,7 +88,7 @@
                         <input type="checkbox" id="t-shirts" name="category" value="t-shirts" class="category-checkbox">
                         <label for="t-shirts">T-Shirts</label>
                     </div>
-                
+
                 </div>
             </aside>
 
@@ -105,7 +109,7 @@
 
     <div id="product-modal" class="product-detail-modal">
         <div class="modal-overlay"></div>
-    
+
         <div class="modal-content">
             <button class="modal-close-btn">&times;</button>
             <div class="modal-image">
@@ -117,7 +121,7 @@
                 <div class="modal-options">
                     <h3>Colors</h3>
                     <ul id="modal-colors" class="color-selector">
-                        </ul>
+                    </ul>
                 </div>
                 <div class="modal-price" id="modal-price">$0.00</div>
                 <button class="add-to-cart-btn">Add To Cart</button>
@@ -127,4 +131,5 @@
 
     <script src="js/ShopPage.js"></script>
 </body>
+
 </html>

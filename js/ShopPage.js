@@ -1,84 +1,63 @@
-
 window.addEventListener('load', () => {
     const overlay = document.getElementById('page-transition-overlay');
-    // Add the class to play the reveal animation
     overlay.classList.add('circle-out-animation');
 });
 document.addEventListener('DOMContentLoaded', () => {
-
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const sidebar = document.getElementById('mobile-sidebar');
-    const closeBtn = document.getElementById('close-sidebar-btn');
-
-    // Open sidebar
-    if(hamburgerBtn){
-        hamburgerBtn.addEventListener('click', () => {
-            sidebar.classList.add('is-open');
-        });
-    }
-
-    // Close sidebar
-    if(closeBtn){
-        closeBtn.addEventListener('click', () => {
-            sidebar.classList.remove('is-open');
-        });
-    }
 
     let cartItems = [];
     let activeModalProduct = null;
 
     // 1. Hardcoded product data
-    const products = [
-        { 
-            id: 1, 
-            name: "Men's Winter Jacket", 
-            price: 99, 
-            category: "jackets", 
+    const products = [{
+            id: 1,
+            name: "Men's Winter Jacket",
+            price: 99,
+            category: "jackets",
             imageUrl: "images/product1.jpg",
             colors: ["Black", "Navy", "Olive"],
             description: "A warm, insulated winter jacket designed to withstand cold weather, featuring a water-resistant shell and multiple pockets."
         },
-        { 
-            id: 2, 
-            name: "Graphic T-Shirt", 
-            price: 29, 
-            category: "t-shirts", 
+        {
+            id: 2,
+            name: "Graphic T-Shirt",
+            price: 29,
+            category: "t-shirts",
             imageUrl: "images/product2.jpg",
             colors: ["White", "Heather Grey"],
             description: "A soft, 100% cotton t-shirt with a unique, vintage-inspired graphic print on the front."
         },
-        { 
-            id: 3, 
-            name: "Cozy Hoodie", 
-            price: 59, 
-            category: "sweatshirts", 
+        {
+            id: 3,
+            name: "Cozy Hoodie",
+            price: 59,
+            category: "sweatshirts",
             imageUrl: "images/product3.jpg",
             colors: ["Charcoal", "Maroon", "Forest Green"],
             description: "An ultra-soft fleece-lined hoodie, perfect for lounging or casual outings. Features a drawstring hood and a kangaroo pocket."
         },
-        { 
-            id: 4, 
-            name: "Leather Bomber Jacket", 
-            price: 149, 
-            category: "jackets", 
+        {
+            id: 4,
+            name: "Leather Bomber Jacket",
+            price: 149,
+            category: "jackets",
             imageUrl: "images/product4.jpg",
             colors: ["Brown", "Black"],
             description: "A timeless leather bomber jacket crafted from genuine lambskin, with ribbed cuffs and a classic silhouette."
         },
-        { 
-            id: 5, 
-            name: "Fleece Sweatshirt", 
-            price: 49, 
-            category: "sweatshirts", 
+        {
+            id: 5,
+            name: "Fleece Sweatshirt",
+            price: 49,
+            category: "sweatshirts",
             imageUrl: "images/product5.jpg",
             colors: ["Grey", "Blue", "Red"],
             description: "A comfortable and lightweight fleece sweatshirt, ideal for layering. Features a classic crewneck design."
         },
-        { 
-            id: 6, 
-            name: "Plain Cotton T-Shirt", 
-            price: 19, 
-            category: "t-shirts", 
+        {
+            id: 6,
+            name: "Plain Cotton T-Shirt",
+            price: 19,
+            category: "t-shirts",
             imageUrl: "images/product6.jpg",
             colors: ["Black", "White", "Navy"],
             description: "An essential plain t-shirt made from premium Supima cotton for superior softness and durability."
@@ -159,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCartPreview() {
         // Clear previous content
         cartPreviewContent.innerHTML = '';
-    
+
         if (cartItems.length === 0) {
             // If cart is empty
             cartPreviewContent.innerHTML = '<p>Your Cart is empty</p>';
@@ -184,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- NEW FUNCTION TO SHOW AND POPULATE THE MODAL ---
+    // This function is to show card details
     function showProductDetail(productId) {
         // Find the product from our main array
         const product = products.find(p => p.id == productId);
@@ -206,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalPrice.textContent = `$${product.price}`;
 
         // Create color swatches
-        modalColors.innerHTML = ''; // Clear old colors
+        modalColors.innerHTML = ''; 
         product.colors.forEach((color, index) => {
             const li = document.createElement('li');
             li.style.backgroundColor = color;
@@ -227,36 +206,35 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.add('show');
     }
 
-    // --- NEW EVENT LISTENERS TO CLOSE THE MODAL ---
     function closeModal() {
         modal.classList.remove('show');
     }
 
     addToCartBtn.addEventListener('click', () => {
-        if (!activeModalProduct) return; // Do nothing if no product is selected
-    
+        if (!activeModalProduct) return; 
+
         // Check if the item is already in the cart
         const existingItem = cartItems.find(item => item.id === activeModalProduct.id);
-    
+
         if (existingItem) {
             // If it exists, just increase the quantity
             existingItem.quantity++;
         } else {
             // If it's a new item, add it to the cart array with a quantity of 1
-            cartItems.push({ 
-                ...activeModalProduct, // Copy product info
-                quantity: 1 
+            cartItems.push({
+                ...activeModalProduct,
+                quantity: 1
             });
         }
-    
+
         // Refresh the cart preview to show the new item
         updateCartPreview();
-        
+
         // Close the modal for a better user experience
         closeModal();
     });
 
-    
+
 
     modalCloseBtn.addEventListener('click', closeModal);
     modalOverlay.addEventListener('click', closeModal);
@@ -271,20 +249,16 @@ const animatedGrid = document.querySelectorAll('.fade-in-grid');
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        // If the element is intersecting the viewport
         if (entry.isIntersecting) {
-                // Add the 'show' class to make it visible
             entry.target.classList.add('show');
-                // Stop observing the element so the animation doesn't repeat
             observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        // Trigger the animation when the element is 15% visible
-        threshold: 0.30
+        }
+    });
+}, {
+    // Trigger the animation when the element is 30% visible
+    threshold: 0.30
 });
 
-// Tell the observer to watch each of the animated elements
+
 animatedElements.forEach(el => observer.observe(el));
 animatedGrid.forEach(el => observer.observe(el));
-

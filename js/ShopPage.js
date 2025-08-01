@@ -75,6 +75,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartPreviewContent = document.getElementById('cart-preview-content');
     const cartCount = document.querySelector('.cart-count');
 
+    function updateCartPreview() {
+        // Clear previous content
+        cartPreviewContent.innerHTML = '';
+
+        if (cartItems.length === 0) {
+            // If cart is empty
+            cartPreviewContent.innerHTML = '<p>Your Cart is empty</p>';
+            cartCount.textContent = '0';
+        } else {
+            // If cart has items
+            let totalCount = 0;
+            cartItems.forEach(item => {
+                totalCount += item.quantity;
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-preview-item';
+                itemElement.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.name}">
+                    <div>
+                        <div><p>${item.name}</p></div>
+                        <div><p>Qty: ${item.quantity}</p></div>
+                    </div>
+                `;
+                cartPreviewContent.appendChild(itemElement);
+            });
+            cartCount.textContent = totalCount;
+        }
+    }
+
+    // 4. Function to get selected categories and filter products
+    function filterProducts() {
+        const selectedCategories = [];
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedCategories.push(checkbox.value);
+            }
+        });
+
+        let filteredProducts;
+
+        // If "all" is selected or no category is selected, show all products
+        if (selectedCategories.includes('all') || selectedCategories.length === 0) {
+            filteredProducts = products;
+        } else {
+            // Filter products based on the selected categories
+            filteredProducts = products.filter(product => selectedCategories.includes(product.category));
+        }
+
+        renderProducts(filteredProducts);
+    }
+
     // 3. Function to render products to the grid
     function renderProducts(productsToRender) {
         // Clear the existing grid content
@@ -108,60 +158,14 @@ document.addEventListener('DOMContentLoaded', () => {
         productCount.textContent = `Showing ${productsToRender.length} Products`;
     }
 
-    // 4. Function to get selected categories and filter products
-    function filterProducts() {
-        const selectedCategories = [];
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                selectedCategories.push(checkbox.value);
-            }
-        });
-
-        let filteredProducts;
-
-        // If "all" is selected or no category is selected, show all products
-        if (selectedCategories.includes('all') || selectedCategories.length === 0) {
-            filteredProducts = products;
-        } else {
-            // Filter products based on the selected categories
-            filteredProducts = products.filter(product => selectedCategories.includes(product.category));
-        }
-
-        renderProducts(filteredProducts);
-    }
+    
 
     // 5. Add event listeners to all checkboxes
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', filterProducts);
     });
 
-    function updateCartPreview() {
-        // Clear previous content
-        cartPreviewContent.innerHTML = '';
-
-        if (cartItems.length === 0) {
-            // If cart is empty
-            cartPreviewContent.innerHTML = '<p>Your Cart is empty</p>';
-            cartCount.textContent = '0';
-        } else {
-            // If cart has items
-            let totalCount = 0;
-            cartItems.forEach(item => {
-                totalCount += item.quantity;
-                const itemElement = document.createElement('div');
-                itemElement.className = 'cart-preview-item';
-                itemElement.innerHTML = `
-                    <img src="${item.imageUrl}" alt="${item.name}">
-                    <div>
-                        <div><p>${item.name}</p></div>
-                        <div><p>Qty: ${item.quantity}</p></div>
-                    </div>
-                `;
-                cartPreviewContent.appendChild(itemElement);
-            });
-            cartCount.textContent = totalCount;
-        }
-    }
+    
 
     // This function is to show card details
     function showProductDetail(productId) {
@@ -257,6 +261,26 @@ const observer = new IntersectionObserver((entries) => {
 }, {
     // Trigger the animation when the element is 30% visible
     threshold: 0.30
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const sidebar = document.getElementById('mobile-sidebar');
+    const closeBtn = document.getElementById('close-sidebar-btn');
+
+    // Open sidebar
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            sidebar.classList.add('is-open');
+        });
+    }
+
+    // Close sidebar
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('is-open');
+        });
+    }
 });
 
 

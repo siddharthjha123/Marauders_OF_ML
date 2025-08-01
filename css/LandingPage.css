@@ -982,4 +982,8 @@ body.loading footer {
         /* Keeping the 2x2 grid on tablets, but you could change it here */
         height: 400px;
     }
+
+    .nav-icons{
+        display: none;
+    }
 }

@@ -554,6 +554,7 @@ nav {
 
     .product-grid {
         grid-template-columns: 1fr;
+        display: grid;
     }
 
     .filter-sidebar {
@@ -568,5 +569,9 @@ nav {
 
     .modal-content img {
         max-height: 200px;
+    }
+
+    .nav-icons{
+        display: none;
     }
 }

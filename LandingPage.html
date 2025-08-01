@@ -8,35 +8,72 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-    <header class="navbar-header">
-        <div class="page-container">
-            <nav class="navbar">
-                <div class="nav-left">
-                    <a href="#" class="nav-logo">Ecommerce</a>
-                    <ul class="nav-links">
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#">Stories</a></li>
-                        <li><a href="#">About</a></li>
-                    </ul>
-                    <div class="nav-search">
-                        <input type="text" placeholder="&#x1F50D Search">
-                    </div>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#">Ecommerce</a>
+            </div>
+            <div class="nav-links">
+                <a href="#">Shop</a>
+                <a href="#">Stories</a>
+                <a href="#">About</a>
+                <div class="search-container">
+                    <input type="text" placeholder="Search">
+                    <i class="fas fa-search"></i>
                 </div>
-                
-                <div class="nav-right">
-                    <a href="#" class="nav-cart">
-                        <span>&#x1F6D2;</span>
-                    </a>
-                    <a href="#" class="nav-login">Login</a>
-                </div>
-            </nav>
-        </div>
+            </div>
+            <div class="nav-icons">
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">3</span>
+                </a>
+                <a href="#" class="login-link">Login</a>
+            </div>
+        </nav>
     </header>
 
     <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Better clothing for the planet</h1>
+                <p>Create screens directly in Method or add your images from Sketch or Figma. You can even sync designs from your cloud storage!</p>
+                <a href="#" class="btn-primary">Shop All</a>
+            </div>
+            
+            <div class="main_Reference">
+
+                <div class="slider" reverse="true" style=" 
+                    --width: 600px; 
+                    --height: 600px; 
+                    --quantity: 8; 
+                "> 
+                    <div class="list"> 
+                        <div class="item" style="--position: 1"><picture><img src="images/slider2_1.jpg" alt="Slider 2-1"><source srcset="images/slider2_1.svg" type="image/svg+xml"></picture></div> 
+                        <div class="item" style="--position: 2"><picture><img src="images/slider2_2.jpg" alt="Slider 2-2"><source srcset="images/slider2_2.svg" type="image/svg+xml"></picture></div> 
+                        <div class="item" style="--position: 3"><picture><img src="images/slider2_3.jpg" alt="Slider 2-3"><source srcset="images/slider2_3.svg" type="image/svg+xml"></picture></div>   
+                        <div class="item" style="--position: 4"><picture><img src="images/slider2_4.jpg" alt="Slider 2-4"><source srcset="images/slider2_4.svg" type="image/svg+xml"></picture></div> 
+                        <div class="item" style="--position: 5"><picture><img src="images/slider2_5.jpg" alt="Slider 2-5"><source srcset="images/slider2_5.svg" type="image/svg+xml"></picture></div> 
+                        <div class="item" style="--position: 6"><picture><img src="images/slider2_6.jpg" alt="Slider 2-6"><source srcset="images/slider2_6.svg" type="image/svg+xml"></picture></div> 
+                        <div class="item" style="--position: 7"><picture><img src="images/slider2_7.jpg" alt="Slider 2-7"><source srcset="images/slider2_7.svg" type="image/svg+xml"></picture></div> 
+                        <div class="item" style="--position: 8"><picture><img src="images/slider2_8.jpg" alt="Slider 2-8"><source srcset="images/slider2_8.svg" type="image/svg+xml"></picture></div> 
+                    </div> 
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-in">
+            <div class="featured-logos">
+                <img src="images/nyt-logo.svg" alt="The New York Times" class="featured-logo">
+                <img src="images/vogue-logo.svg" alt="Vogue" class="featured-logo">
+                <img src="images/vanity-fair-logo.svg" alt="Vanity Fair" class="featured-logo">
+                <img src="images/cnbc-logo.svg" alt="CNBC" class="featured-logo">
+            </div>
+        </section>
+
         <div class="page-container">
             <section class="hero-section">
                 <h1>Our latest arrivals</h1>
@@ -116,6 +153,30 @@
                     <div class="slider-controls">
                         <button id="prev-btn-2" class="slider-btn">&#x2190;</button> 
                         <button id="next-btn-2" class="slider-btn">&#x2192;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Team</h2>
+            <div class="team-list">
+                <div class="team-member">
+                    <div class="member-number">01</div>
+                    <div class="member-name">Bala Sudalaimuthu</div>
+                    <div class="member-title">CEO</div>
+                    <div class="member-image">
+                        <img src="images/bala.jpg" alt="Bala Sudalaimuthu">
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-number">02</div>
+                    <div class="member-name">Siddharth Jha</div>
+                    <div class="member-title">COO</div>
+                    <div class="member-image">
+                        <img src="images/siddharth.jpg" alt="Siddharth Jha">
                     </div>
                 </div>
             </div>

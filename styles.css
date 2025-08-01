@@ -301,11 +301,11 @@ nav {
     padding: 20px 40px 20px 80px;
     border-bottom: 1px solid #eee;
     position: relative;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .team-member:hover {
-    background-color: #2563eb; /* Blue background on hover */
+    background-color: #333; 
     color: white;
 }
 
@@ -343,14 +343,15 @@ nav {
     opacity: 0;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     pointer-events: none;
     z-index: 10;
 }
 
 .team-member:hover .member-image {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .member-image img {

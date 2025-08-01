@@ -24,7 +24,7 @@ loginForm.addEventListener('submit', async (e) => {
         document.getElementById('serverError').textContent = error.message;
     } else {
         alert("Login successful!");
-        window.location.href = '/index.html'; // <--- Redirect here
+        window.location.href = '/LandingPage.html'; // <--- Redirect here
     }
 });
 

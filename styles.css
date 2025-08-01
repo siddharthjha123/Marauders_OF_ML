@@ -285,8 +285,9 @@ nav {
 
 .team-section h2 {
     font-size: 2rem;
-    margin-bottom: 40px;
+    margin-bottom: 100px;
     text-align: center;
+    margin-left: 2px;
 }
 
 .team-list {
@@ -297,7 +298,7 @@ nav {
 .team-member {
     display: flex;
     align-items: center;
-    padding: 20px 0;
+    padding: 20px 40px 20px 80px;
     border-bottom: 1px solid #eee;
     position: relative;
     transition: all 0.3s ease;
@@ -329,6 +330,7 @@ nav {
     width: 200px;
     text-align: right;
     padding-right: 20px;
+    padding-left: 20px;
     font-size: 1rem;
 }
 

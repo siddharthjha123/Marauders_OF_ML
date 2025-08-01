@@ -258,3 +258,139 @@ nav {
 .category-checkbox{
     accent-color: var(--dark-graphite);
 }
+
+/* 6. Product Detail Modal Styling */
+
+.product-detail-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Make the modal visible when it has the 'show' class */
+.product-detail-modal.show {
+    display: flex;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(61, 61, 61, 0.5);
+    /* This creates the blur effect on the page behind the modal */
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--dark-graphite);
+    padding: 2rem;
+    border-radius: 8px;
+    display: flex;
+    gap: 2rem;
+    max-width: 900px;
+    width: 90%;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--silver-mist);
+}
+
+.modal-image {
+    flex-basis: 50%;
+    max-height: 400px;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-details {
+    flex-basis: 50%;
+    color: var(--silver-mist);
+}
+
+.modal-details h2 {
+    margin-top: 0;
+}
+
+.color-selector {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.color-selector li {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s;
+}
+
+.color-selector li:hover {
+    transform: scale(1.1);
+}
+
+.color-selector li.active {
+    border-color: var(--silver-mist);
+}
+
+.modal-price {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--silver-mist);
+    color: var(--dark-graphite);
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* A simple fade-in for the background */
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* A subtle zoom-in for the card */
+@keyframes zoom-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+
+/* Next, apply these animations when the modal is shown */
+
+/* Animate the overlay when the modal gets the 'show' class */
+.product-detail-modal.show .modal-overlay {
+    animation: fade-in 0.3s ease-out forwards;
+}
+
+/* Animate the content card when the modal gets the 'show' class */
+.product-detail-modal.show .modal-content {
+    animation: zoom-in 0.3s ease-out forwards;
+}

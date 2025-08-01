@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="ShopPage.css">
-    <link rel="stylesheet" href="Shared.css">
+    <link rel="stylesheet" href="css/ShopPage.css">
+    <link rel="stylesheet" href="css/Shared.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="transition-start">
@@ -84,6 +84,28 @@
         </div>
     </main>
 
-    <script src="ShopPage.js"></script>
+    <div id="product-modal" class="product-detail-modal">
+        <div class="modal-overlay"></div>
+    
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <div class="modal-image">
+                <img id="modal-image" src="" alt="Product Image">
+            </div>
+            <div class="modal-details">
+                <h2 id="modal-title">Product Name</h2>
+                <p id="modal-description">Product Description</p>
+                <div class="modal-options">
+                    <h3>Colors</h3>
+                    <ul id="modal-colors" class="color-selector">
+                        </ul>
+                </div>
+                <div class="modal-price" id="modal-price">$0.00</div>
+                <button class="add-to-cart-btn">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/ShopPage.js"></script>
 </body>
 </html>

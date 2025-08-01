@@ -450,3 +450,113 @@ nav {
 .product-detail-modal.show .modal-content {
     animation: zoom-in 0.3s ease-out forwards;
 }
+
+/* --- Sidebar and Hamburger Styles --- */
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--silver-mist);
+    z-index: 1000;
+    padding: 2rem;
+    transform: translateX(-100%); /* Start off-screen */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* The 'is-open' class slides the sidebar into view */
+.mobile-sidebar.is-open {
+    transform: translateX(0);
+}
+
+.mobile-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 4rem;
+}
+
+.mobile-sidebar ul li a {
+    color: var(--dark-graphite);
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: block;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+
+.mobile-sidebar ul li a:hover{
+    color: var(--cool-pewter);
+    scale: 1.1;
+    transition: 0.3s ease-in;
+}
+
+.close-sidebar-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--dark-graphite);
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.hamburger-btn {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 500;
+}
+
+.hamburger-btn span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--silver-mist);
+    border-radius: 2px;
+}
+
+/* --- Media Query to Show/Hide elements --- */
+@media (max-width: 768px) {
+    /* Hide the desktop links */
+    .nav-links, .nav-search {
+        display: none;
+    }
+    
+    /* Show the hamburger button */
+    .hamburger-btn {
+        display: flex;
+    }
+
+    .shop-content {
+        /* Change to a single column layout earlier for tablets */
+        grid-template-columns: 1fr;
+    }
+
+    .product-grid {
+        /* Keep the 3-column grid on wider tablets if you like, or change to 2 */
+        grid-template-columns: 1fr;
+    }
+
+    .filter-sidebar {
+        /* Add a border to separate the filters when stacked */
+        border-bottom: 1px solid var(--silver-mist);
+        padding-bottom: 2rem;
+    }
+
+    .modal-content {
+        flex-direction: column;
+        object-fit: fit;
+    }
+
+    .modal-content img{
+        max-height: 200px;
+    }
+}

@@ -29,7 +29,7 @@ window.addEventListener('load', function() {
         }
         
         percentageElement.textContent = Math.floor(currentPercentage);
-    }, 1); // Update every 100ms
+    }, 50); // Update every 100ms
 });
 
 //let cartItems = []; 
@@ -72,6 +72,26 @@ function updateCartPreview() {
 
 // Call the function on page load to set the initial state
 document.addEventListener('DOMContentLoaded', updateCartPreview);
+// --- Mobile Sidebar Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const sidebar = document.getElementById('mobile-sidebar');
+    const closeBtn = document.getElementById('close-sidebar-btn');
+
+    // Open sidebar
+    if(hamburgerBtn){
+        hamburgerBtn.addEventListener('click', () => {
+            sidebar.classList.add('is-open');
+        });
+    }
+
+    // Close sidebar
+    if(closeBtn){
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('is-open');
+        });
+    }
+});
 
 const images = document.querySelectorAll('.slider-image');
 const prevBtn = document.getElementById('prev-btn');

@@ -6,6 +6,24 @@ window.addEventListener('load', () => {
 });
 document.addEventListener('DOMContentLoaded', () => {
 
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const sidebar = document.getElementById('mobile-sidebar');
+    const closeBtn = document.getElementById('close-sidebar-btn');
+
+    // Open sidebar
+    if(hamburgerBtn){
+        hamburgerBtn.addEventListener('click', () => {
+            sidebar.classList.add('is-open');
+        });
+    }
+
+    // Close sidebar
+    if(closeBtn){
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('is-open');
+        });
+    }
+
     let cartItems = [];
     let activeModalProduct = null;
 

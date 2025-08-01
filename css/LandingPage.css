@@ -778,3 +778,172 @@ body.loading footer {
     }
 }
 
+/* --- Sidebar and Hamburger Styles --- */
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--dark-graphite);
+    z-index: 1000;
+    padding: 2rem;
+    transform: translateX(-100%); /* Start off-screen */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* The 'is-open' class slides the sidebar into view */
+.mobile-sidebar.is-open {
+    transform: translateX(0);
+}
+
+.mobile-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 4rem;
+}
+
+.mobile-sidebar ul li a {
+    color: var(--silver-mist);
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: block;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+
+.mobile-sidebar ul li a:hover{
+    color: var(--cool-pewter);
+    scale: 1.1;
+    transition: 0.3s ease-in;
+}
+
+.close-sidebar-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.hamburger-btn {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 500;
+}
+
+.hamburger-btn span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-graphite);
+    border-radius: 2px;
+}
+
+
+
+/*Adding Responsiveness For Mobile Screens*/
+/* --- Mobile Styles (up to 480px) --- */
+@media (max-width: 480px) {
+    .nav-left {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-search {
+        display: none; /* Hide the search bar on very small screens */
+    }
+
+    .hero-section {
+        padding: 4rem 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem; /* Even smaller title */
+    }
+
+    .card-container {
+        /* Stack the cards vertically */
+        flex-direction: column; 
+    }
+
+    .middle-card {
+        /* Reset the transform on the middle card so it doesn't stick out */
+        transform: translateY(0); 
+    }
+
+    .featured-grid {
+        grid-template-columns: 1fr;
+        height: 600px;
+        margin-bottom: 10px;
+    }
+    
+    .child1 .grid-right {
+        /* This creates a two-column grid */
+        grid-template-columns: 1fr 1fr; 
+        /* The rows will now be created automatically, so we can remove grid-template-rows */
+        height: 400px; /* Adjust height for a 2x2 grid */
+    }
+
+    .child1 .grid-left{
+        height: 200px;
+    }
+
+    .child2 .grid-right {
+        /* This creates a two-column grid */
+        grid-template-columns: 1fr 1fr; 
+        /* The rows will now be created automatically, so we can remove grid-template-rows */
+        height: 400px; /* Adjust height for a 2x2 grid */
+    }
+
+    .child2 .grid-left{
+        height: 200px;
+    }
+}
+
+
+/* --- Tablet Styles (up to 768px) --- */
+@media (max-width: 768px) {
+    .hamburger-btn{
+        display: flex;
+    }
+
+    .page-container {
+        width: 90%; /* Use more of the screen space */
+    }
+    
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-section h1 {
+        font-size: 3rem; /* Make the main title smaller */
+    }
+
+    .card-container {
+        /* Allow cards to wrap to the next line if they don't fit */
+        flex-wrap: wrap; 
+    }
+    
+    .featured-grid {
+        /* Change the 2-column grid to a single column */
+        grid-template-columns: 1fr; 
+        height: auto; /* Let the height adjust automatically */
+    }
+
+    .grid-right {
+        /* Keep the 2x2 grid on tablets, but you could change it here */
+        height: 400px;
+    }
+}

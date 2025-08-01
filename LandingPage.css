@@ -1,0 +1,203 @@
+/* 1. Define color variables and basic body styles */
+:root {
+    --silver-mist: #E5E4E2;
+    --soft-platinum: #C5C6C7;
+    --cool-pewter: #909497;
+    --dark-graphite: #2F2F2F;
+    --page-background: #f8f8f8; /* A light background for the page */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color: var(--page-background);
+}
+
+/* 2. Page layout container (80% width, centered) */
+.page-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* 3. Navbar styling */
+.navbar-header {
+    background-color: var(--dark-graphite);
+    padding: 1.5rem 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--silver-mist);
+}
+
+.nav-left, .nav-middle, .nav-right, .nav-links, .nav-cart {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.navbar a {
+    color: var(--silver-mist);
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.nav-logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-search input {
+    color: var(--cool-pewter);
+    border-radius: 20px;
+    padding: 2px 4px 2px 4px;
+    background: #f1f1f0;
+    padding: 0.5rem 1rem;
+}
+
+.nav-middle input::placeholder {
+    color: var(--cool-pewter);
+}
+
+.nav-search {
+    border-radius: 20px;
+    border: 1px solid var(--cool-pewter);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* 4. Hero section styling */
+.hero-section {
+    text-align: center;
+    padding: 6rem 0;
+}
+
+.hero-section h1 {
+    font-size: 4rem;
+    color: var(--dark-graphite);
+    margin-bottom: 1.5rem;
+}
+
+.hero-section p {
+    max-width: 550px;
+    margin: 0 auto 2.5rem auto;
+    color: var(--cool-pewter);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.shop-all-btn {
+    background-color: transparent;
+    border: 1px solid var(--cool-pewter);
+    color: var(--dark-graphite);
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 5rem;
+}
+
+/* 5. Card styling and alignment */
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.card {
+    width: 320px;
+    height: 420px;
+    background-color: var(--soft-platinum);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.middle-card {
+    height: 440px;
+    /* This moves the middle card up without disturbing the layout */
+    transform: translateY(-50px);
+}
+
+/* 6. Featured Products Grid Section */
+.featured-section {
+    background-color: var(--dark-graphite);
+    padding: 6rem 0;
+}
+
+.section-header {
+    text-align: center;
+    color: var(--silver-mist);
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--cool-pewter);
+    line-height: 1.6;
+}
+
+.featured-grid {
+    display: grid;
+    /* Creates two equal-width columns */
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    height: 600px; /* Defines a fixed height for the entire grid container */
+}
+
+.grid-left {
+    background-color: var(--soft-platinum);
+    border-radius: 8px;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.grid-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5rem;
+    min-width: 0;
+    min-height: 0;
+}
+
+.grid-item {
+    background-color: var(--soft-platinum);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

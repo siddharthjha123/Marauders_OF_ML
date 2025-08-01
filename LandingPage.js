@@ -6,6 +6,8 @@ const prevBtn2 = document.getElementById('prev-btn-2');
 const nextBtn2 = document.getElementById('next-btn-2');
 
 let currentIndex = 0;
+let slideInterval;
+let slideInterval2;
 
 // 3. Function to show the correct image
 function showImage(index) {
@@ -14,33 +16,78 @@ function showImage(index) {
     // Then, add 'active' class to the one we want to show
     images[index].classList.add('active');
 }
-
-function showImage2(index) {
+function showImage2(index){
     images2.forEach(img => img.classList.remove('active'));
-    images2[index].classList.add('active');
+    images2[index].classList.add('active')
+}
+
+
+function autoSlide() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+}
+
+function autoslide2(){
+    currentIndex = (currentIndex + 1) % images2.length;
+    showImage2(currentIndex);
+}
+
+function startSlideTimer() {
+    // Stop any existing timer before starting a new one
+    clearInterval(slideInterval);
+    // Set the interval to call autoSlide every 2.5 seconds (2500 milliseconds)
+    slideInterval = setInterval(autoSlide, 2500);
+}
+
+function startSlideTimer2(){
+    clearInterval(slideInterval2);
+    slideInterval2 = setInterval(autoslide2, 2500);
 }
 
 nextBtn.addEventListener('click', () => {
-    // Move to the next index, or loop back to 0 if at the end
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
-    // Just logging the current index to the console to check if the function is working
-    console.log(currentIndex);
+    autoSlide();
+    startSlideTimer();
 })
 
 prevBtn.addEventListener('click', () => {
     // Move to the previous index, or loop to the end if at the beginning
     currentIndex = (currentIndex - 1 + images.length) % images.length;
     showImage(currentIndex);
-    console.log(currentIndex);
+    startSlideTimer();
 })
 
 nextBtn2.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % images2.length;
-    showImage2(currentIndex);
+    autoslide2();
+    startSlideTimer2();
 })
 
 prevBtn2.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + images2.length) % images2.length;
     showImage2(currentIndex);
+    startSlideTimer2();
 })
+
+startSlideTimer();
+startSlideTimer2();
+
+const animatedElements = document.querySelectorAll('.fade-in-element');
+const animatedGrid = document.querySelectorAll('.fade-in-grid');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        // If the element is intersecting the viewport
+        if (entry.isIntersecting) {
+                // Add the 'show' class to make it visible
+            entry.target.classList.add('show');
+                // Stop observing the element so the animation doesn't repeat
+            observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        // Trigger the animation when the element is 15% visible
+        threshold: 0.30
+});
+
+// Tell the observer to watch each of the animated elements
+animatedElements.forEach(el => observer.observe(el));
+animatedGrid.forEach(el => observer.observe(el))

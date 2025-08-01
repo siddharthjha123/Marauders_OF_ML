@@ -141,6 +141,62 @@ nav {
     color: var(--silver-mist);
 }
 
+.cart-preview {
+    position: absolute;
+    top: 100%; /* Position it right below the icon */
+    right: 0;
+    width: 280px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 100;
+
+    /* Hide the box by default and prepare for animation */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+/* Show the preview box on hover */
+.cart-icon:hover .cart-preview {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+#cart-preview-content p {
+    color: var(--dark-graphite);
+}
+
+/* Styling for items inside the preview */
+.cart-preview-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+.cart-preview-item div p {
+    color: var(--dark-graphite);
+}
+
+.cart-preview-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+.cart-preview-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
 .page-container {
     width: 90%;
     max-width: 1400px;

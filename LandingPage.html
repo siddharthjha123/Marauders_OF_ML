@@ -12,6 +12,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-counter">
+                <span id="loading-percentage">0</span><span class="percentage-symbol"> - 100</span>
+            </div>
+            <div class="loading-text">
+                <div class="text-line line-1">YOUR</div>
+                <div class="text-line line-2">WEB EXPERIENCE</div>
+                <div class="text-line line-3">IS LOADING RIGHT <span class="flicker-text">NOW</span></div>
+            </div>
+            <div class="loading-subtitle">
+                <div class="subtitle-line">Please wait</div>
+                <div class="subtitle-line">a few seconds.</div>
+            </div>
+        </div>
+    </div>
     <div id="page-transition-overlay"></div>
 
     <header>
@@ -31,7 +47,12 @@
             <div class="nav-icons">
                 <a href="#" class="cart-icon">
                     <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-count">3</span>
+                    <span class="cart-count">0</span>
+            
+                    <div class="cart-preview">
+                        <div id="cart-preview-content">
+                            </div>
+                    </div>
                 </a>
                 <a href="#" class="login-link">Login</a>
             </div>

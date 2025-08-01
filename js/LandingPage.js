@@ -1,3 +1,78 @@
+window.addEventListener('load', function() {
+    // Add loading class to body
+    document.body.classList.add('loading');
+    
+    // Loading counter animation
+    let currentPercentage = 0;
+    const targetPercentage = 100;
+    const percentageElement = document.getElementById('loading-percentage');
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    // Simulate loading progress
+    const loadingInterval = setInterval(() => {
+        currentPercentage += Math.random() * 3 + 1; // Random increment between 1-4
+        
+        if (currentPercentage >= targetPercentage) {
+            currentPercentage = targetPercentage;
+            clearInterval(loadingInterval);
+            
+            // Hide loading screen after reaching 100%
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.transition = 'opacity 0.5s ease-out';
+                
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    document.body.classList.remove('loading');
+                }, 500);
+            }, 800); // Wait a bit at 100% before hiding
+        }
+        
+        percentageElement.textContent = Math.floor(currentPercentage);
+    }, 1); // Update every 100ms
+});
+
+//let cartItems = []; 
+
+// Version 2: Cart has items
+
+let cartItems = [];
+
+
+function updateCartPreview() {
+    const cartPreviewContent = document.getElementById('cart-preview-content');
+    const cartCount = document.querySelector('.cart-count');
+
+    // Clear previous content
+    cartPreviewContent.innerHTML = '';
+
+    if (cartItems.length === 0) {
+        // If cart is empty
+        cartPreviewContent.innerHTML = '<p>Your Cart is empty</p>';
+        cartCount.textContent = '0';
+    } else {
+        // If cart has items
+        let totalCount = 0;
+        cartItems.forEach(item => {
+            totalCount += item.quantity;
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cart-preview-item';
+            itemElement.innerHTML = `
+                <img src="${item.imageUrl}" alt="${item.name}">
+                <div>
+                    <div>${item.name}</div>
+                    <div>Qty: ${item.quantity}</div>
+                </div>
+            `;
+            cartPreviewContent.appendChild(itemElement);
+        });
+        cartCount.textContent = totalCount;
+    }
+}
+
+// Call the function on page load to set the initial state
+document.addEventListener('DOMContentLoaded', updateCartPreview);
+
 const images = document.querySelectorAll('.slider-image');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');

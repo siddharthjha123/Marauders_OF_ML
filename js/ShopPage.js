@@ -4,10 +4,10 @@ window.addEventListener('load', () => {
     // Add the class to play the reveal animation
     overlay.classList.add('circle-out-animation');
 });
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
+
+    let cartItems = [];
+    let activeModalProduct = null;
 
     // 1. Hardcoded product data
     const products = [
@@ -74,6 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('product-modal');
     const modalCloseBtn = document.querySelector('.modal-close-btn');
     const modalOverlay = document.querySelector('.modal-overlay');
+    const addToCartBtn = document.querySelector('.add-to-cart-btn');
+    const cartPreviewContent = document.getElementById('cart-preview-content');
+    const cartCount = document.querySelector('.cart-count');
 
     // 3. Function to render products to the grid
     function renderProducts(productsToRender) {
@@ -135,11 +138,41 @@ document.addEventListener('DOMContentLoaded', () => {
         checkbox.addEventListener('change', filterProducts);
     });
 
+    function updateCartPreview() {
+        // Clear previous content
+        cartPreviewContent.innerHTML = '';
+    
+        if (cartItems.length === 0) {
+            // If cart is empty
+            cartPreviewContent.innerHTML = '<p>Your Cart is empty</p>';
+            cartCount.textContent = '0';
+        } else {
+            // If cart has items
+            let totalCount = 0;
+            cartItems.forEach(item => {
+                totalCount += item.quantity;
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-preview-item';
+                itemElement.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.name}">
+                    <div>
+                        <div><p>${item.name}</p></div>
+                        <div><p>Qty: ${item.quantity}</p></div>
+                    </div>
+                `;
+                cartPreviewContent.appendChild(itemElement);
+            });
+            cartCount.textContent = totalCount;
+        }
+    }
+
     // --- NEW FUNCTION TO SHOW AND POPULATE THE MODAL ---
     function showProductDetail(productId) {
         // Find the product from our main array
         const product = products.find(p => p.id == productId);
+        activeModalProduct = products.find(p => p.id == productId)
         if (!product) return;
+
 
         // Get modal elements
         const modalImage = document.getElementById('modal-image');
@@ -181,11 +214,38 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.remove('show');
     }
 
+    addToCartBtn.addEventListener('click', () => {
+        if (!activeModalProduct) return; // Do nothing if no product is selected
+    
+        // Check if the item is already in the cart
+        const existingItem = cartItems.find(item => item.id === activeModalProduct.id);
+    
+        if (existingItem) {
+            // If it exists, just increase the quantity
+            existingItem.quantity++;
+        } else {
+            // If it's a new item, add it to the cart array with a quantity of 1
+            cartItems.push({ 
+                ...activeModalProduct, // Copy product info
+                quantity: 1 
+            });
+        }
+    
+        // Refresh the cart preview to show the new item
+        updateCartPreview();
+        
+        // Close the modal for a better user experience
+        closeModal();
+    });
+
+    
+
     modalCloseBtn.addEventListener('click', closeModal);
     modalOverlay.addEventListener('click', closeModal);
 
     // 6. Initial render on page load
     filterProducts();
+    updateCartPreview();
 });
 
 const animatedElements = document.querySelectorAll('.fade-in-element');

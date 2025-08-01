@@ -1,0 +1,66 @@
+/*
+#page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--dark-graphite);
+    z-index: 9999; 
+
+    transform: scaleY(0);
+    transform-origin: bottom;
+}
+
+@keyframes slide-in {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
+}
+
+@keyframes slide-out {
+    from { transform: scaleY(1); }
+    to { transform: scaleY(0); }
+}
+
+.slide-in-animation {
+    animation: slide-in 0.5s forwards cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.slide-out-animation {
+    transform: scaleY(1); 
+    transform-origin: top;
+    animation: slide-out 0.5s forwards cubic-bezier(0.65, 0, 0.35, 1);
+}
+*/
+
+/* Page Transition Overlay Styling (Base) */
+#page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--dark-graphite);
+    z-index: 9999;
+
+    /* NEW: Use clip-path to create the circle effect */
+    clip-path: circle(0% at 50% 50%);
+
+}
+
+/* NEW: Keyframes for the circle animation */
+@keyframes circle-wipe {
+    from { clip-path: circle(0% at 50% 50%); }
+    to   { clip-path: circle(100% at 50% 50%); }
+}
+
+/* NEW: Helper classes for the circle animation */
+.circle-in-animation {
+    animation: circle-wipe 0.7s forwards ease-in-out;
+}
+
+.circle-out-animation {
+    /* Start fully visible and animate in reverse */
+    clip-path: circle(100% at 50% 50%);
+    animation: circle-wipe 0.7s reverse forwards ease-in-out;
+}

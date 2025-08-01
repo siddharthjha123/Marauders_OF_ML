@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Men's</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/ShopPage.css">
+    <link rel="stylesheet" href="css/Shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body class="transition-start">
+    <div id="page-transition-overlay"></div>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="LandingPage.html">Ecommerce</a>
+            </div>
+            <div class="nav-links">
+                <a href="ShopPage.html">Shop</a>
+                <a href="#">Stories</a>
+                <a href="#">About</a>
+                <div class="search-container">
+                    <input type="text" placeholder="Search">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="nav-icons">
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+
+                    <div class="cart-preview">
+                        <div id="cart-preview-content">
+                        </div>
+                    </div>
+                </a>
+                <a href="login.html" class="login-link">Login</a>
+                <a href="register.html" class="login-link">Register</a>
+            </div>
+            <button id="hamburger-btn" class="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+        <nav id="mobile-sidebar" class="mobile-sidebar">
+            <button id="close-sidebar-btn" class="close-sidebar-btn">&times;</button>
+            <ul>
+                <li><a href="ShopPage.html">Shop</a></li>
+                <li><a href="#">Stories</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="shop-header fade-in-element">
+        <div class="page-container">
+            <h1>Shop Men's</h1>
+            <p>Revamp your style with the latest designer trends in men's clothing or achieve a perfectly curated wardrobe thanks to our line-up of timeless pieces.</p>
+        </div>
+    </section>
+    <main class="page-container fade-in-element">
+        <div class="shop-content">
+            <aside class="filter-sidebar">
+                <h2>Filters</h2>
+                <div class="filter-group">
+                    <h3>Categories</h3>
+                    <div class="filter-option">
+                        <input type="checkbox" id="all" name="category" value="all" class="category-checkbox">
+                        <label for="all">All</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="jackets" name="category" value="jackets" class="category-checkbox">
+                        <label for="jackets">Jackets</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="sweatshirts" name="category" value="sweatshirts" class="category-checkbox">
+                        <label for="sweatshirts">Sweatshirts & Hoodies</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="t-shirts" name="category" value="t-shirts" class="category-checkbox">
+                        <label for="t-shirts">T-Shirts</label>
+                    </div>
+
+                </div>
+            </aside>
+
+            <div class="product-grid-container">
+                <div class="product-grid-header">
+                    <span id="product-count">Showing 0 Products</span>
+                    <select name="sort" id="sort-by">
+                        <option value="popular">Sort By: Popular</option>
+                        <option value="price-low-high">Price: Low to High</option>
+                        <option value="price-high-low">Price: High to Low</option>
+                    </select>
+                </div>
+                <div id="product-grid" class="product-grid fade-in-grid">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="product-modal" class="product-detail-modal">
+        <div class="modal-overlay"></div>
+
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <div class="modal-image">
+                <img id="modal-image" src="" alt="Product Image">
+            </div>
+            <div class="modal-details">
+                <h2 id="modal-title">Product Name</h2>
+                <p id="modal-description">Product Description</p>
+                <div class="modal-options">
+                    <h3>Colors</h3>
+                    <ul id="modal-colors" class="color-selector">
+                    </ul>
+                </div>
+                <div class="modal-price" id="modal-price">$0.00</div>
+                <button class="add-to-cart-btn">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/ShopPage.js"></script>
+</body>
+
+</html>

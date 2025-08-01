@@ -1,0 +1,577 @@
+/* 1. Defining color variables and basic body styles */
+:root {
+    --silver-mist: #e5e4e2;
+    --soft-platinum: #c5c6c7;
+    --cool-pewter: #909497;
+    --dark-graphite: #2f2f2f;
+    --page-background: #fff;
+    --text-dark: #1a1a1a;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    background-color: var(--page-background);
+    color: var(--text-dark);
+}
+
+body.transition-start #page-transition-overlay {
+    /* This is forcing the overlay to cover the screen on page load */
+    clip-path: circle(100% at 50% 50%);
+}
+
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-grid {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-grid.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* This class will be added by JavaScript when the element is in view */
+.fade-in-element.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 2. Header and Navigation */
+header {
+    background-color: var(--dark-graphite);
+    padding: 15px 0;
+    box-shadow: 0 1px 3px rgba(255, 254, 254, 0.394);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo a {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--silver-mist);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-weight: 500;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    color: var(--silver-mist);
+}
+
+.nav-links a:hover {
+    color: var(--cool-pewter);
+}
+
+.search-container {
+    position: relative;
+    margin-left: 15px;
+}
+
+.search-container input {
+    padding: 8px 30px 8px 10px;
+    border: none;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    width: 150px;
+}
+
+.search-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cart-icon {
+    position: relative;
+    text-decoration: none;
+    color: var(--silver-mist);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--silver-mist);
+    color: var(--dark-graphite);
+    font-size: 0.7rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-link {
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--silver-mist);
+}
+
+.cart-preview {
+    position: absolute;
+    top: 100%;
+    /* Position it right below the icon */
+    right: 0;
+    width: 280px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 100;
+
+    /* Hide the box by default and prepare for animation */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+/* Show the preview box on hover */
+.cart-icon:hover .cart-preview {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+#cart-preview-content p {
+    color: var(--dark-graphite);
+}
+
+/* Styling for items inside the preview */
+.cart-preview-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.cart-preview-item div p {
+    color: var(--dark-graphite);
+}
+
+.cart-preview-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.cart-preview-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.page-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* 3. Shop Header Styling */
+.shop-header {
+    padding: 4rem 0;
+    text-align: center;
+    background-color: var(--dark-graphite);
+    color: var(--silver-mist);
+}
+
+.shop-header h1 {
+    margin: 0 0 1rem 0;
+    font-size: 3rem;
+}
+
+.shop-header p {
+    max-width: 500px;
+    margin: 0 auto;
+    color: var(--cool-pewter);
+    line-height: 1.6;
+}
+
+/* 4. Main Content Layout */
+.shop-content {
+    display: grid;
+    /* A fixed-width sidebar and a flexible main area */
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+    padding: 3rem 0;
+}
+
+/* 5. Filter Sidebar Styling */
+.filter-sidebar h2 {
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--silver-mist);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-group h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.filter-option {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.filter-option input {
+    margin-right: 0.5rem;
+    width: 18px;
+    height: 18px;
+}
+
+/* 6. Product Grid Styling */
+.product-grid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--silver-mist);
+}
+
+#sort-by {
+    padding: 0.5rem;
+    border: 1px solid var(--cool-pewter);
+    border-radius: 4px;
+}
+
+.product-grid {
+    display: grid;
+    /* Creates a responsive 3-column grid */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.product-card {
+    text-align: left;
+}
+
+.product-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    background-color: #f5f5f5;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease-out;
+}
+
+.product-card img:hover {
+    scale: 1.1;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+
+.product-card h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.product-card p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--cool-pewter);
+}
+
+.category-checkbox {
+    accent-color: var(--dark-graphite);
+}
+
+/* 7. Product Detail Modal Styling */
+
+.product-detail-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Making the modal visible when it has the 'show' class */
+.product-detail-modal.show {
+    display: flex;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(61, 61, 61, 0.5);
+    /* This creates the blur effect on the page behind the modal */
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--dark-graphite);
+    padding: 2rem;
+    border-radius: 8px;
+    display: flex;
+    gap: 2rem;
+    max-width: 900px;
+    width: 90%;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--silver-mist);
+}
+
+.modal-image {
+    flex-basis: 50%;
+    max-height: 400px;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-details {
+    flex-basis: 50%;
+    color: var(--silver-mist);
+}
+
+.modal-details h2 {
+    margin-top: 0;
+}
+
+.color-selector {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.color-selector li {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s;
+}
+
+.color-selector li:hover {
+    transform: scale(1.1);
+}
+
+.color-selector li.active {
+    border-color: var(--silver-mist);
+}
+
+.modal-price {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--silver-mist);
+    color: var(--dark-graphite);
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* A subtle zoom-in for the card */
+@keyframes zoom-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Animating the overlay when the modal gets the 'show' class */
+.product-detail-modal.show .modal-overlay {
+    animation: fade-in 0.3s ease-out forwards;
+}
+
+/* Animating the content card when the modal gets the 'show' class */
+.product-detail-modal.show .modal-content {
+    animation: zoom-in 0.3s ease-out forwards;
+}
+
+/* 8. Sidebar and Hamburger Styles */
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--silver-mist);
+    z-index: 1000;
+    padding: 2rem;
+    transform: translateX(-100%);
+    /* Start off-screen */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* The 'is-open' class slides the sidebar into view */
+.mobile-sidebar.is-open {
+    transform: translateX(0);
+}
+
+.mobile-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 4rem;
+}
+
+.mobile-sidebar ul li a {
+    color: var(--dark-graphite);
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: block;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+
+.mobile-sidebar ul li a:hover {
+    color: var(--cool-pewter);
+    scale: 1.1;
+    transition: 0.3s ease-in;
+}
+
+.close-sidebar-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--dark-graphite);
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 500;
+}
+
+.hamburger-btn span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--silver-mist);
+    border-radius: 2px;
+}
+
+/* 9. Media Query to Show/Hide elements */
+@media (max-width: 768px) {
+
+    .nav-links,
+    .nav-search {
+        display: none;
+    }
+
+    .hamburger-btn {
+        display: flex;
+    }
+
+    .shop-content {
+        grid-template-columns: 1fr;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        display: grid;
+    }
+
+    .filter-sidebar {
+        border-bottom: 1px solid var(--silver-mist);
+        padding-bottom: 2rem;
+    }
+
+    .modal-content {
+        flex-direction: column;
+        object-fit: fit;
+    }
+
+    .modal-content img {
+        max-height: 200px;
+    }
+
+    .nav-icons{
+        display: none;
+    }
+}

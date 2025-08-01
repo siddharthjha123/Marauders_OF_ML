@@ -1,0 +1,330 @@
+:root {
+    --silver-mist: #E5E4E2;
+    --soft-platinum: #C5C6C7;
+    --cool-pewter: #909497;
+    --dark-graphite: #2F2F2F;
+    --page-background: #f8f8f8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 150px 0px 0px 0px;
+}
+
+/* Header and Navigation */
+header {
+    background-color: var(--dark-graphite);
+    padding: 15px 0;
+    box-shadow: 0 1px 3px rgba(255, 254, 254, 0.394);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo a {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--silver-mist);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-weight: 500;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    color: var(--silver-mist);
+}
+
+.nav-links a:hover {
+    color: var(--cool-pewter);
+}
+
+.search-container {
+    position: relative;
+    margin-left: 15px;
+}
+
+.search-container input {
+    padding: 8px 30px 8px 10px;
+    border: none;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    width: 150px;
+}
+
+.search-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cart-icon {
+    position: relative;
+    text-decoration: none;
+    color: var(--silver-mist);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--silver-mist);
+    color: var(--dark-graphite);
+    font-size: 0.7rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-link {
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--silver-mist);
+}
+
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--silver-mist);
+    z-index: 1000;
+    padding: 2rem;
+    transform: translateX(-100%);
+    /* Start off-screen */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* The 'is-open' class slides the sidebar into view */
+.mobile-sidebar.is-open {
+    transform: translateX(0);
+}
+
+.mobile-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 4rem;
+}
+
+.mobile-sidebar ul li a {
+    color: var(--dark-graphite);
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: block;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+
+.mobile-sidebar ul li a:hover {
+    color: var(--cool-pewter);
+    scale: 1.1;
+    transition: 0.3s ease-in;
+}
+
+.close-sidebar-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--dark-graphite);
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.hamburger-btn {
+    display: none;
+    /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 500;
+}
+
+.hamburger-btn span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--silver-mist);
+    border-radius: 2px;
+}
+
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    animation: slideUp 0.6s ease;
+}
+
+h1 {
+    color: var(--dark-graphite);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    animation: fadeIn 0.6s ease;
+}
+
+label {
+    display: block;
+    color: #495057;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    background: var(--silver-mist);
+    color: #495057;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--dark-graphite);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(45, 134, 89, 0.1);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, var(--dark-graphite), var(--cool-pewter));
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(45, 134, 89, 0.2);
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #495057;
+}
+
+.register-link a {
+    color: var(--dark-graphite);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+    color: var(--soft-platinum);
+}
+
+.error {
+    color: #dc3545;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Loading spinner */
+.loading {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

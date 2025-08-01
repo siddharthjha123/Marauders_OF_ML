@@ -1,57 +1,26 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const panels = document.querySelectorAll('.switch-panel');
-    const forms = document.querySelectorAll('.auth-form');
-    const graphics = document.querySelectorAll('.graphic-panel');
+// Include supabaseClient.js first!
+const loginForm = document.getElementById('loginForm');
 
-    panels.forEach(panel => {
-        panel.addEventListener('click', (e) => {
-            const target = e.target.dataset.panel;
-            
-            // Switch active states
-            panels.forEach(p => p.classList.remove('active'));
-            forms.forEach(form => form.classList.remove('active'));
-            graphics.forEach(graphic => graphic.classList.remove('active'));
+loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-            e.target.classList.add('active');
-            document.getElementById(`${target}Form`).classList.add('active');
-            document.querySelector(`[data-panel="${target}"]`).classList.add('active');
+    // Get form values
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
 
-            // Animate form container
-            document.querySelector('.forms-container').style.transform = 
-                target === 'signup' ? 'translateX(-10%)' : 'translateX(0)';
-        });
+    // Clear previous errors
+    document.getElementById('serverError').textContent = '';
+
+    // Supabase sign-in
+    const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password
     });
 
-    // Form validation
-    document.querySelectorAll('.auth-form').forEach(form => {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const inputs = form.querySelectorAll('input');
-            let isValid = true;
-
-            inputs.forEach(input => {
-                if (!input.checkValidity()) {
-                    isValid = false;
-                    input.parentElement.classList.add('invalid');
-                }
-            });
-
-            if (isValid) {
-                form.classList.add('submitting');
-                // Simulate API call
-                setTimeout(() => {
-                    form.reset();
-                    form.classList.remove('submitting');
-                    alert('Authentication successful! Redirecting...');
-                }, 1500);
-            }
-        });
-    });
-
-    // Input validation
-    document.querySelectorAll('input').forEach(input => {
-        input.addEventListener('input', () => {
-            input.parentElement.classList.remove('invalid');
-        });
-    });
+    if (error) {
+        document.getElementById('serverError').textContent = error.message;
+    } else {
+        alert("Login successful!");
+        window.location.href = '/index.html'; // <--- Redirect here
+    }
 });

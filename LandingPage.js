@@ -90,4 +90,24 @@ const observer = new IntersectionObserver((entries) => {
 
 // Tell the observer to watch each of the animated elements
 animatedElements.forEach(el => observer.observe(el));
-animatedGrid.forEach(el => observer.observe(el))
+animatedGrid.forEach(el => observer.observe(el));
+
+
+const transitionLinks = document.querySelectorAll('a[href="ShopPage.html"]');
+const overlay = document.getElementById('page-transition-overlay');
+
+transitionLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+        // 1. Prevent the link from navigating immediately
+        event.preventDefault();
+        const destination = this.href;
+
+        // 2. Add the animation class to the overlay
+        overlay.classList.add('circle-in-animation');
+
+        // 3. Wait for the animation to finish, then go to the new page
+        setTimeout(() => {
+            window.location = destination;
+        }, 700); // Must match the animation duration in CSS
+    });
+});

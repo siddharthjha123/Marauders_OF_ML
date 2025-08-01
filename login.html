@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Portal - Ecommerce</title>
+    <link rel="stylesheet" href="login-css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="forms-container">
+            <div class="form-header">
+                <h2 class="title">Welcome Back</h2>
+                <div class="panel-switcher">
+                    <span class="switch-panel active" data-panel="login">Login</span>
+                    <span class="switch-panel" data-panel="signup">Sign Up</span>
+                </div>
+            </div>
+            
+            <div class="form-body">
+                <!-- Login Form -->
+                <form class="auth-form active" id="loginForm">
+                    <div class="input-group floating">
+                        <input type="email" id="loginEmail" required>
+                        <label>Email Address</label>
+                        <i class="fas fa-envelope icon"></i>
+                    </div>
+                    <div class="input-group floating">
+                        <input type="password" id="loginPassword" required>
+                        <label>Password</label>
+                        <i class="fas fa-lock icon"></i>
+                    </div>
+                    <div class="options-group">
+                        <label class="remember-me">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="auth-btn">Sign In <i class="fas fa-arrow-right"></i></button>
+                </form>
+
+                <!-- Signup Form -->
+                <form class="auth-form" id="signupForm">
+                    <div class="input-group floating">
+                        <input type="text" id="signupName" required>
+                        <label>Full Name</label>
+                        <i class="fas fa-user icon"></i>
+                    </div>
+                    <div class="input-group floating">
+                        <input type="email" id="signupEmail" required>
+                        <label>Email Address</label>
+                        <i class="fas fa-envelope icon"></i>
+                    </div>
+                    <div class="input-group floating">
+                        <input type="password" id="signupPassword" required>
+                        <label>Password</label>
+                        <i class="fas fa-lock icon"></i>
+                    </div>
+                    <button type="submit" class="auth-btn">Create Account <i class="fas fa-rocket"></i></button>
+                </form>
+            </div>
+
+            <div class="social-auth">
+                <p>Or continue with</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
+                    <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon apple"><i class="fab fa-apple"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="graphics-container">
+            <div class="graphic-panel" data-panel="login">
+                <img src="images/slider2_1.jpg" alt="Login Visual">
+                <div class="graphic-text">
+                    <h3>Welcome Back!</h3>
+                    <p>Continue your sustainable shopping journey</p>
+                </div>
+            </div>
+            <div class="graphic-panel" data-panel="signup">
+                <img src="images/slider2_2.jpg" alt="Signup Visual">
+                <div class="graphic-text">
+                    <h3>Join Our Community</h3>
+                    <p>Start your eco-friendly shopping experience</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="login-script.js"></script>
+</body>
+</html>

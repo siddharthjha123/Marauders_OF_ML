@@ -1,3 +1,39 @@
+// Loading Screen Functionality
+window.addEventListener('load', function() {
+    // Add loading class to body
+    document.body.classList.add('loading');
+    
+    // Loading counter animation
+    let currentPercentage = 0;
+    const targetPercentage = 100;
+    const percentageElement = document.getElementById('loading-percentage');
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    // Simulate loading progress
+    const loadingInterval = setInterval(() => {
+        currentPercentage += Math.random() * 3 + 1; // Random increment between 1-4
+        
+        if (currentPercentage >= targetPercentage) {
+            currentPercentage = targetPercentage;
+            clearInterval(loadingInterval);
+            
+            // Hide loading screen after reaching 100%
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.transition = 'opacity 0.5s ease-out';
+                
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    document.body.classList.remove('loading');
+                }, 500);
+            }, 800); // Wait a bit at 100% before hiding
+        }
+        
+        percentageElement.textContent = Math.floor(currentPercentage);
+    }, 100); // Update every 100ms
+});
+
+// ... existing code ...
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Search functionality

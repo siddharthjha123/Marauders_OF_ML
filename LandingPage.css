@@ -163,16 +163,18 @@ body {
     display: grid;
     /* Creates two equal-width columns */
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    /*gap: 1.5rem;*/
     height: 600px; /* Defines a fixed height for the entire grid container */
 }
 
 .grid-left {
     background-color: var(--soft-platinum);
-    border-radius: 8px;
+    /*border-radius: 8px;*/
     min-width: 0;
     min-height: 0;
     overflow: hidden;
+    position: relative;
+
 }
 
 .grid-left img {
@@ -185,14 +187,14 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 1.5rem;
+    /*gap: 1.5rem;*/
     min-width: 0;
     min-height: 0;
 }
 
 .grid-item {
     background-color: var(--soft-platinum);
-    border-radius: 8px;
+    /*border-radius: 8px;*/
     overflow: hidden;
 }
 
@@ -200,4 +202,63 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* Styling for the images inside the slider */
+.slider-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0; /* Hide all images by default */
+    transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
+}
+
+/* The active class makes an image visible */
+.slider-image.active {
+    opacity: 1;
+}
+
+/* Styling for the second slider */
+.slider-image-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0; /* Hide all images by default */
+    transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
+}
+
+/* The active class makes an image visible */
+.slider-image-2.active {
+    opacity: 1;
+}
+
+
+/* Styling for the controls container */
+.slider-controls {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Styling for the slider buttons */
+.slider-btn {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(47, 47, 47, 0.7); /* Semi-transparent dark background */
+    border: 1px solid var(--cool-pewter);
+    border-radius: 50%; /* Makes it a circle */
+    color: var(--silver-mist);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
